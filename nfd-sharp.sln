@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NfdSharp", "NfdSharp\NfdSharp.csproj", "{1F72CCFE-0845-4ABF-9DA9-34693348BA14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NfdSharpTest", "NfdSharpTest\NfdSharpTest.csproj", "{90DBDDC7-8C26-4C2B-97C2-9C0985CBDF16}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1F72CCFE-0845-4ABF-9DA9-34693348BA14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F72CCFE-0845-4ABF-9DA9-34693348BA14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F72CCFE-0845-4ABF-9DA9-34693348BA14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F72CCFE-0845-4ABF-9DA9-34693348BA14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90DBDDC7-8C26-4C2B-97C2-9C0985CBDF16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90DBDDC7-8C26-4C2B-97C2-9C0985CBDF16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90DBDDC7-8C26-4C2B-97C2-9C0985CBDF16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90DBDDC7-8C26-4C2B-97C2-9C0985CBDF16}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,4 +1,5 @@
-﻿using NfdSharp;
+﻿using System;
+using NfdSharp;
 using NUnit.Framework;
 
 namespace NfdSharpTest
@@ -9,25 +10,36 @@ namespace NfdSharpTest
         [Test]
         public void OpenDialog()
         {
-            Nfd.OpenDialog("jpg", "", out string path);
+            var res = Nfd.OpenDialog("jpg,jpeg,JPG;png", "", out string path);
+            Console.WriteLine(res);
+            Console.WriteLine(path);
         }
         
         [Test]
         public void OpenDialogMultiple()
         {
-            Nfd.OpenDialogMultiple("png", "", out string[] path);
+            var res = Nfd.OpenDialogMultiple("png", "", out string[] path);
+            Console.WriteLine(res);
+            foreach (var p in path)
+            {
+                Console.WriteLine(p);
+            }
         }
         
         [Test]
         public void SaveDialog()
         {
-            Nfd.SaveDialog("tga", "", out string path);
+            var res = Nfd.SaveDialog("tga", "", out string path);
+            Console.WriteLine(res);
+            Console.WriteLine(path);
         }
         
         [Test]
         public void PickFolder()
         {
-            Nfd.PickFolder("bmp", out string path);
+            var res = Nfd.PickFolder("bmp", out string path);
+            Console.WriteLine(res);
+            Console.WriteLine(path);
         }
     }
 }

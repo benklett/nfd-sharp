@@ -1,3 +1,5 @@
+[![NuGet](https://img.shields.io/nuget/v/NfdSharp.svg)](https://www.nuget.org/packages/NfdSharp)
+
 # nfd-sharp
 
 This is a wrapper for the

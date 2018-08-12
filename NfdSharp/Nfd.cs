@@ -3,22 +3,50 @@ using System.Runtime.InteropServices;
 
 namespace NfdSharp
 {
+    /// <summary>
+    /// Wrapper class for the nfd library <see href="https://github.com/mlabbe/nativefiledialog"/>
+    /// </summary>
     public static class Nfd
     {
         public enum NfdResult
         {
+            /// <summary>
+            /// Programmatic error
+            /// </summary>
             NFD_ERROR,
+            /// <summary>
+            /// User pressed okay, or successful return
+            /// </summary>
             NFD_OKAY,
+            /// <summary>
+            /// User pressed cancel
+            /// </summary>
             NFD_CANCEL
         }
 
-        public struct NfdPathset
+        private struct NfdPathset
         {
             public UIntPtr buf;
+            /// <summary>
+            /// Byte offsets into buf
+            /// </summary>
             public UIntPtr indices;
+            /// <summary>
+            /// Number of indices into buf
+            /// </summary>
             public ulong count;
         }
 
+        /// <summary>
+        /// Single file open dialog
+        /// </summary>
+        /// <param name="filterList">; denotes a new filter group and , extends the filter group.</param>
+        /// <param name="defaultPath"></param>
+        /// <param name="path">The output path</param>
+        /// <returns>
+        /// Should return <see cref="NfdResult.NFD_OKAY"/> or <see cref="NfdResult.NFD_CANCEL"/>.
+        /// On <see cref="NfdResult.NFD_ERROR"/> check with <see cref="GetError"/>.
+        /// </returns>
         public static NfdResult OpenDialog(string filterList, string defaultPath, out string path)
         {
             IntPtr filterListPtr = Utils.ToNfdString(filterList);
@@ -36,6 +64,16 @@ namespace NfdSharp
             return res;
         }
         
+        /// <summary>
+        /// Multiple file open dialog
+        /// </summary>
+        /// <param name="filterList">; denotes a new filter group and , extends the filter group.</param>
+        /// <param name="defaultPath"></param>
+        /// <param name="outPaths">The output paths</param>
+        /// <returns>
+        /// Should return <see cref="NfdResult.NFD_OKAY"/> or <see cref="NfdResult.NFD_CANCEL"/>.
+        /// On <see cref="NfdResult.NFD_ERROR"/> check with <see cref="GetError"/>.
+        /// </returns>
         public static NfdResult OpenDialogMultiple(string filterList, string defaultPath, out string[] outPaths)
         {
             IntPtr filterListPtr = Utils.ToNfdString(filterList);
@@ -67,6 +105,16 @@ namespace NfdSharp
             return res;
         }
 
+        /// <summary>
+        /// Save dialog
+        /// </summary>
+        /// <param name="filterList">; denotes a new filter group and , extends the filter group.</param>
+        /// <param name="defaultPath"></param>
+        /// <param name="path">The output path</param>
+        /// <returns>
+        /// Should return <see cref="NfdResult.NFD_OKAY"/> or <see cref="NfdResult.NFD_CANCEL"/>.
+        /// On <see cref="NfdResult.NFD_ERROR"/> check with <see cref="GetError"/>.
+        /// </returns>
         public static NfdResult SaveDialog(string filterList, string defaultPath, out string path)
         {
             IntPtr filterListPtr = Utils.ToNfdString(filterList);
@@ -84,6 +132,15 @@ namespace NfdSharp
             return res;
         }
 
+        /// <summary>
+        /// Select folder dialog
+        /// </summary>
+        /// <param name="defaultPath">; denotes a new filter group and , extends the filter group.</param>
+        /// <param name="path">The output path</param>
+        /// <returns>
+        /// Should return <see cref="NfdResult.NFD_OKAY"/> or <see cref="NfdResult.NFD_CANCEL"/>.
+        /// On <see cref="NfdResult.NFD_ERROR"/> check with <see cref="GetError"/>.
+        /// </returns>
         public static NfdResult PickFolder(string defaultPath, out string path)
         {
             IntPtr defaultPathPtr = Utils.ToNfdString(defaultPath);
@@ -99,6 +156,10 @@ namespace NfdSharp
             return res;
         }
 
+        /// <summary>
+        /// To get an error message from nfd on <see cref="NfdResult.NFD_ERROR"/>
+        /// </summary>
+        /// <returns></returns>
         public static string GetError()
         {
             IntPtr message = NFD_GetError();

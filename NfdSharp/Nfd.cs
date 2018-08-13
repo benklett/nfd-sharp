@@ -164,7 +164,6 @@ namespace NfdSharp
         {
             IntPtr message = NFD_GetError();
             string ret = Utils.FromNfdString(message);
-            Marshal.FreeHGlobal(message);
             
             return ret;
         }
